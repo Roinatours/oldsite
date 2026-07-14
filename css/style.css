@@ -118,15 +118,9 @@ ul{ list-style: none; margin: 0; padding: 0; }
 .logo-mark{
   width: 34px;
   height: 34px;
-  border-radius: 50%;
-  border: 1.5px solid var(--seal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 15px;
-  color: var(--seal);
-  transform: rotate(-6deg);
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .nav-links{
@@ -312,6 +306,12 @@ ul{ list-style: none; margin: 0; padding: 0; }
   height: 220px;
 }
 
+.img-xian{
+  background-image: url("images/XI'AN-Photo.png");
+  background-size: cover;
+  background-position: center;
+}
+
 .postcard-body{
   padding: 26px 26px 28px;
   position: relative;
@@ -446,7 +446,6 @@ ul{ list-style: none; margin: 0; padding: 0; }
 }
 
 .footer-brand .logo{ color: var(--paper); margin-bottom: 12px; }
-.footer-brand .logo-mark{ border-color: var(--gold); color: var(--gold); }
 
 .footer-brand p{
   font-size: 13px;
