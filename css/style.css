@@ -568,6 +568,80 @@ ul{ list-style: none; margin: 0; padding: 0; }
 .policy-content ul + p,
 .policy-content p + ul{ margin-top: 14px; }
 
+/* ---------- About page: tagline + "Our Aim" PDF button ---------- */
+.about-tagline{
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-tagline .big-quote{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 32px;
+}
+
+.about-tagline .btn-apply{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius);
+}
+
+.about-tagline .btn-apply svg{ flex-shrink: 0; }
+
+/* ---------- About page: Our Culture ---------- */
+.culture-block{
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.culture-block p{
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- About page: Our Team (six-across row) ---------- */
+.team-grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.team-card{
+  position: relative;
+  text-align: center;
+}
+
+.team-card .team-photo{
+  aspect-ratio: 3 / 4;
+  margin-bottom: 14px;
+  border: 1px solid var(--paper-line);
+  width: 100%;
+  object-fit: cover;
+}
+
+.team-card h3{
+  font-family: var(--font-display);
+  font-size: 16px;
+  margin: 0 0 2px;
+}
+
+.team-card p{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px){
   .nav-links{
@@ -596,8 +670,14 @@ ul{ list-style: none; margin: 0; padding: 0; }
 
   .footer-grid{ grid-template-columns: 1fr 1fr; }
   .footer-bottom{ flex-direction: column; gap: 8px; }
+
+  .team-grid{ grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 700px){
   .policy-row{ grid-template-columns: 1fr; gap: 12px; }
+}
+
+@media (max-width: 560px){
+  .team-grid{ grid-template-columns: repeat(2, 1fr); gap: 18px 16px; }
 }
