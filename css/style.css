@@ -20,7 +20,7 @@
   --font-body: 'Inter', sans-serif;
   --font-mono: 'Space Mono', monospace;
 
-  --max-width: 1180px;
+  --max-width: 1600px;
   --radius: 2px;
 }
 
@@ -285,7 +285,7 @@ ul{ list-style: none; margin: 0; padding: 0; }
 /* ---------- Destination / postcard cards ---------- */
 .destinations{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
 }
 
@@ -307,9 +307,27 @@ ul{ list-style: none; margin: 0; padding: 0; }
 }
 
 .img-xian{
-  background-image: url("images/XI'AN-Photo.png");
+  background-image: url("../images/XIAN-photo.png");
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
+}
+
+.img-shanghai{
+  background-image: url("../images/SHA-photo.png");
+  background-size: cover;
+  background-position: center 60%;
+}
+
+.img-beijing{
+  background-image: url("../images/BEIJING-photo.png");
+  background-size: cover;
+  background-position: center 20%;
+}
+
+.img-chongqing{
+  background-image: url("../images/CHQ-photo.png");
+  background-size: cover;
+  background-position: center 40%;
 }
 
 .postcard-body{
@@ -495,6 +513,61 @@ ul{ list-style: none; margin: 0; padding: 0; }
   margin: 10px 0 0;
 }
 
+/* ---------- Policy rows (Privacy Policy / Terms — label + content) ---------- */
+.policy-row{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px dashed var(--paper-line);
+}
+
+.policy-row:first-of-type{ border-top: none; }
+
+.policy-row h2{
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+
+.policy-row .policy-content p{
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.policy-row .policy-content p:last-child{ margin-bottom: 0; }
+
+.policy-content ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.policy-content li{
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.policy-content li::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--seal);
+}
+
+.policy-content li:last-child{ margin-bottom: 0; }
+
+.policy-content ul + p,
+.policy-content p + ul{ margin-top: 14px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px){
   .nav-links{
@@ -523,4 +596,8 @@ ul{ list-style: none; margin: 0; padding: 0; }
 
   .footer-grid{ grid-template-columns: 1fr 1fr; }
   .footer-bottom{ flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 700px){
+  .policy-row{ grid-template-columns: 1fr; gap: 12px; }
 }

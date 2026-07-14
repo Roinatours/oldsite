@@ -1,35 +1,60 @@
-# Roina Tours — 静态网站
+# Roina Tours
 
-## 文件结构
+Marketing site for Roina Tours — educational travel programs across China (Xi'an, Shanghai, Beijing, Chongqing). Plain HTML/CSS/JS, no build step, hosted on GitHub Pages.
+
+## Structure
+
 ```
-roinatours-site/
-├── index.html          首页
-├── about.html          关于我们
-├── products.html        产品/目的地详情(西安/上海/北京/重庆)
-├── smart-model.html     SMART 模型
-├── contact.html         联系我们
-├── css/style.css        全站样式
-└── js/main.js           移动端菜单交互
+.
+├── index.html                  Home
+├── about.html                  About Us / team
+├── products.html               Destination programs (Xi'an, Shanghai, Beijing, Chongqing)
+├── smart-model.html            SMART learning model / approach
+├── contact.html                Contact details
+├── privacy-policy.html         Privacy policy
+├── terms-and-conditions.html   Fees, refund policy, participation notes, FAQ
+├── css/
+│   └── style.css               Single stylesheet (passport / postcard / travel-journal theme)
+├── js/
+│   └── main.js                 Mobile nav toggle
+└── images/
+    ├── logo-mark.png           Site logo (header + footer)
+    ├── XIAN-photo.png
+    ├── SHA-photo.png
+    ├── BEIJING-photo.png
+    └── CHQ-photo.png
 ```
 
-## 部署到 GitHub Pages
-1. 在 GitHub 新建一个仓库,比如 `roinatours-site`
-2. 把这个文件夹里的所有文件上传到仓库根目录(直接拖拽上传或用 git push 都可以)
-3. 进入仓库 Settings → Pages
-4. Source 选择 `Deploy from a branch`,Branch 选择 `main` / `/(root)`
-5. 保存后等 1-2 分钟,页面会显示一个 `https://你的用户名.github.io/roinatours-site/` 的网址
-6. 如果想绑定自己的域名(比如 roinatours.com),在同一个 Pages 设置页面填入 Custom domain,再去域名服务商那边加一条 CNAME 记录指向 `你的用户名.github.io`
+Every page shares the same `<header>` and `<footer>` markup, copied from `index.html`:
 
-## 替换占位图片
-所有标记 `[ ... photo ]` 的灰绿色块都是占位符,在 `css/style.css` 里对应 `.placeholder` 样式。
-替换方法:
-1. 把真实图片放进一个新建的 `img/` 文件夹
-2. 找到对应的 `<div class="... placeholder">[ ... ]</div>`,改成:
-   ```html
-   <img src="img/xian.jpg" alt="西安城墙">
-   ```
-   (不需要再加 placeholder 相关 class)
+- **Header**: logo (`images/logo-mark.png`) + nav links (About Us / Products / SMART Model / Contact Us), with `aria-current="page"` set on the link matching the current page, a language toggle, and a mobile menu button.
+- **Footer**: brand blurb, About / Privacy / Social link columns, and a copyright line. The Privacy and Social links point to the real pages and social profiles (not placeholders).
 
-## 之后要加登录/表单
-- 简单联系表单 → 用 Formspree(免费),不需要自己搭后端
-- 登录/账号系统 → Supabase Auth 或 Firebase Auth,前端引入它们的 JS SDK 即可
+`js/main.js` toggles the `.open` class on `.nav-links` when `.nav-toggle` is clicked, for the mobile menu — this is shared across all pages and needs no per-page changes.
+
+## Content status
+
+Most page bodies are still placeholder copy/images (marked `[ ... ]` or described as "placeholder" in the HTML) and need real content:
+
+- `about.html` — team bios and photos
+- `smart-model.html` — actual SMART framework description
+- `products.html` — full per-city program details (duration, itinerary, pricing)
+- `index.html` — hero image
+
+`privacy-policy.html`, `terms-and-conditions.html`, and `contact.html` have real copy already.
+
+## Local development
+
+No build tools required — open `index.html` directly in a browser, or serve the folder with any static file server, e.g.:
+
+```bash
+python3 -m http.server
+```
+
+## Deployment
+
+Static site, hosted on GitHub Pages directly from this repo.
+
+## Recent changes
+
+- Standardized header/footer markup across all pages to match `index.html` (logo image instead of a text "R" mark on the Terms and Privacy pages; real Privacy and Social links in the footer instead of `#` placeholders; removed the extra "Built with plain HTML..." footer line for consistency).
